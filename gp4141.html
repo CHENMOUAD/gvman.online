@@ -1,1 +1,860 @@
-1
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>国投证券 - 2025年潜力股名单</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF4C4C;
+            --accent-color: #000080;
+            --dark-bg: #101726;
+            --light-text: #FFFFFF;
+            --gray-text: #CCCCCC;
+            --card-bg: rgba(20, 30, 50, 0.8);
+            --card-border: rgba(255, 76, 76, 0.3);
+            --button-hover: #D63939;
+            --gradient-dark: linear-gradient(135deg, #0C1220 0%, #161F32 100%);
+            --gradient-accent: linear-gradient(135deg, #FF4C4C 0%, #B82929 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><circle cx="2" cy="2" r="0.3" fill="%23334" /></svg>'), var(--gradient-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient-dark);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect width="1" height="1" fill="%23FF4C4C22" /></svg>');
+            opacity: 0.05;
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        @media (min-width: 992px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        
+        .header-text {
+            flex: 1;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        @media (min-width: 992px) {
+            .header-text {
+                text-align: left;
+                margin-right: 60px;
+                margin-bottom: 0;
+            }
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--light-text);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .main-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--light-text);
+            line-height: 1.3;
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 900;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray-text);
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (min-width: 992px) {
+            .subtitle {
+                margin-left: 0;
+            }
+        }
+        
+        .header-image {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 76, 76, 0.2);
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-accent);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--light-text);
+            position: relative;
+            display: inline-block;
+            padding-left: 15px;
+        }
+        
+        .card-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .card-content {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+        }
+        
+        /* Table Styles */
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .stock-table th {
+            background-color: rgba(255, 76, 76, 0.2);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--light-text);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .stock-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-text);
+        }
+        
+        .stock-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .stock-table .highlight-row {
+            background-color: rgba(255, 76, 76, 0.1);
+        }
+        
+        .stock-table .highlight-text {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        /* Feature Section */
+        .features-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--light-text);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 76, 76, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .feature-text {
+            color: var(--gray-text);
+            font-size: 1.05rem;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            margin: 60px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .social-proof {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .social-card {
+            background-color: rgba(20, 30, 50, 0.6);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        
+        .social-text {
+            color: var(--light-text);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* CTA Styles */
+        .cta-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--gradient-accent);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 76, 76, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .btn:hover {
+            background: var(--button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 76, 76, 0.4);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(255, 76, 76, 0.4);
+        }
+        
+        /* Fixed elements */
+        .wechat-fixed {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(255, 76, 76, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .wechat-fixed:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 76, 76, 0.4);
+        }
+        
+        .wechat-fixed img {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .bottom-float-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        .bottom-float-btn .btn {
+            width: 100%;
+            padding: 18px 30px;
+            font-size: 1.2rem;
+            animation: breathe 3s infinite ease-in-out;
+        }
+        
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(255, 76, 76, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 10px 30px rgba(255, 76, 76, 0.5);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(10, 15, 25, 0.8);
+            padding: 60px 0 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background-color: rgba(20, 30, 50, 0.6);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: left;
+            border: 1px solid var(--card-border);
+        }
+        
+        .disclaimer h3 {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .disclaimer p {
+            margin-bottom: 10px;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Check-in Section */
+        .checkin-section {
+            padding: 60px 0;
+            background-color: rgba(0, 0, 128, 0.1);
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 0, 128, 0.3);
+        }
+        
+        .checkin-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .checkin-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .benefit-list {
+            list-style: none;
+        }
+        
+        .benefit-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-text);
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .benefit-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .time-slot {
+            background-color: rgba(255, 76, 76, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .time-slot h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .time-slot p {
+            color: var(--light-text);
+        }
+        
+        .checkin-method {
+            background-color: rgba(0, 0, 128, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .checkin-method h4 {
+            color: var(--light-text);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Fixed WeChat Button -->
+    <div class="wechat-fixed" onclick="opensite()">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTguNjkxIDUuMjM2N0M2LjEzMjUgNS4yMzY3IDEuNSA3Ljk0NyAxLjUgMTEuNzMwMkMxLjUgMTMuOTc5NiAyLjk4NzUgMTUuOTMgNS4zNjI1IDE3LjE4MDJMMy45OSAxOC45OTQ2TDYuODQgMTcuODIzMUM3LjcwMjUgMTguMTE4IDguNDE1IDE4LjIyMzkgOS4wODI1IDE4LjIyMzlDOC43MjI1IDE3LjU5OTYgOC41NTc1IDE2Ljg5MyA4LjU1NzUgMTYuMTMzOUM4LjU1NzUgMTMuMTc1NSAxMS4xOTg1IDEwLjc5OTYgMTQuNTMzNSAxMC43OTk2QzE0LjgzOTUgMTAuNzk5NiAxNS4xMzkgMTAuODIyNCAxNS40MzA1IDEwLjg2NDZDMTUuMDg3IDcuNzA4IDExLjI1IDUuMjM2NyA4LjY5MSA1LjIzNjdaTTYuNDg3NSA5LjM2MzlDNS45NDI1IDkuMzYzOSA1LjUwMiA4LjkyMzQgNS41MDIgOC4zNzg0QzUuNTAyIDcuODMzNCA1Ljk0MjUgNy4zOTI4IDYuNDg3NSA3LjM5MjhDNy4wMzI1IDcuMzkyOCA3LjQ3MyA3LjgzMzQgNy40NzMgOC4zNzg0QzcuNDczIDguOTIzNCA3LjAzMjUgOS4zNjM5IDYuNDg3NSA5LjM2MzlaTTExLjMyMiA5LjM2MzlDMTAuNzc3IDkuMzYzOSAxMC4zMzY1IDguOTIzNCAxMC4zMzY1IDguMzc4NEMxMC4zMzY1IDcuODMzNCAxMC43NzcgNy4zOTI4IDExLjMyMiA3LjM5MjhDMTEuODY3IDcuMzkyOCAxMi4zMDc1IDcuODMzNCAxMi4zMDc1IDguMzc4NEMxMi4zMDc1IDguOTIzNCAxMS44NjcgOS4zNjM5IDExLjMyMiA5LjM2MzlaTTE0LjUzMzUgMTEuODQ3MUMxMi4zOTkgMTEuODQ3MSAxMC42NjggMTMuNzQ1NSAxMC42NjggMTYuMDI4MUMxMC42NjggMTguMzEwOCAxMi4zOTkgMjAuMjA5MiAxNC41MzM1IDIwLjIwOTJDMTQuOTE3NSAyMC4yMDkyIDE1LjMgMjAuMTU3NCAxNS42NjggMjAuMDY5MkwxNy44OTY1IDIxLjAwMDJMMTYuODUyIDE5LjI4MzFDMTguMzQ5IDE4LjM5NjcgMTkuMzc5IDE3LjA5MDggMTkuMzc5IDE2LjAyODFDMTkuMzc5IDEzLjc0NTUgMTcuNjQ4IDExLjg0NzEgMTQuNTMzNSAxMS44NDcxWk0xMy4xMiAxNC4wNDNDMTIuNzIgMTQuMDQzIDEyLjM5NSAxMy43MTggMTIuMzk1IDEzLjMxOEMxMi4zOTUgMTIuOTE4IDEyLjcyIDEyLjU5MyAxMy4xMiAxMi41OTNDMTMuNTIgMTIuNTkzIDEzLjg0NSAxMi45MTggMTMuODQ1IDEzLjMxOEMxMy44NDUgMTMuNzE4IDEzLjUyIDE0LjA0MyAxMy4xMiAxNC4wNDNaTTE2LjA4IDE0LjA0M0MxNS42OCAxNC4wNDMgMTUuMzU1IDEzLjcxOCAxNS4zNTUgMTMuMzE4QzE1LjM1NSAxMi45MTggMTUuNjggMTIuNTkzIDE2LjA4IDEyLjU5M0MxNi40OCAxMi41OTMgMTYuODA1IDEyLjkxOCAxNi44MDUgMTMuMzE4QzE2LjgwNSAxMy43MTggMTYuNDggMTQuMDQzIDE2LjA4IDE0LjA0M1oiLz48L3N2Zz4=" alt="WeChat">
+    </div>
+
+    <!-- Bottom Floating Button -->
+    <div class="bottom-float-btn">
+        <button class="btn" onclick="opensite()">立即加入获取2025年潜力股名单</button>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <div class="logo">
+                        <h1>国投<span>证券</span></h1>
+                    </div>
+                    <h1 class="main-title">国投证券震撼发布<span class="highlight">2025年十大潜力股</span>名单</h1>
+                    <p class="subtitle">掌握专业分析方法，跟踪潜力股表现，制定高效投资策略，让您的投资决策更加明智</p>
+                    <div class="cta-container">
+                        <button class="btn" onclick="opensite()">免费获取潜力股名单与分析指标</button>
+                    </div>
+                </div>
+                
+                <div class="header-image">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/134c18144bbd86971f8d450ced8c05f624e9034d9974ba39650af4d1b38fe6b9?w=1224&h=652" alt="2025年股市分析">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Section 1: Introduction -->
+        <div class="card">
+            <h2 class="card-title">国投证券2025年潜力股</h2>
+            <div class="card-content">
+                <p>国投证券（SDIC证券）现已发布2025年潜力股名单，共包含10只精选股票。为帮助投资者更有效地管理和分析这些股票，建议学习相关的股市专业课程。这将有助于深入理解市场动态和投资策略，从而更好地跟踪所持股票的表现。</p>
+                <div style="text-align: center; margin: 30px 0;">
+                    <img src="https://www.gvman.online/img/1.jpg" alt="国投证券分析" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);">
+                </div>
+                <div class="cta-container">
+                    <button class="btn" onclick="opensite()">获取完整潜力股名单</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 2: Weekly Report -->
+        <div class="card">
+            <h2 class="card-title">国投证券本周战报</h2>
+            <div class="card-content">
+                <p>国投证券(SDIC SECURITIES)本周战报，勇争先再創佳绩</p>
+                <table class="stock-table">
+                    <tr>
+                        <th>日期</th>
+                        <th>股票</th>
+                        <th>代码</th>
+                        <th>涨幅</th>
+                    </tr>
+                    <tr>
+                        <td>04月07日周一</td>
+                        <td>凯美特气</td>
+                        <td>002549</td>
+                        <td class="highlight-text">10.01%</td>
+                    </tr>
+                    <tr>
+                        <td>04月08日周二</td>
+                        <td>湘财股份</td>
+                        <td>600095</td>
+                        <td class="highlight-text">10.03%</td>
+                    </tr>
+                    <tr>
+                        <td>04月09日周三</td>
+                        <td>中旗新材</td>
+                        <td>001212</td>
+                        <td class="highlight-text">10.00%</td>
+                    </tr>
+                    <tr>
+                        <td>04月10日周四</td>
+                        <td>中旗新材</td>
+                        <td>001212</td>
+                        <td class="highlight-text">9.99%</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td colspan="3" style="text-align: right; font-weight: 700;">本周总收益:</td>
+                        <td class="highlight-text">40.03%</td>
+                    </tr>
+                </table>
+                <div class="cta-container">
+                    <button class="btn" onclick="opensite()">获取每日最新市场分析</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 3: Achievements -->
+        <div class="card">
+            <h2 class="card-title">国投证券投资成果</h2>
+            <div class="card-content">
+                <p>热烈祝贺国投机构截止4月为投资者实现分红突破9.6亿元，目前完成开门红目标81.16%</p>
+                <table class="stock-table">
+                    <tr>
+                        <th>股票代码</th>
+                        <th>股票名称</th>
+                        <th>买进时间</th>
+                        <th>卖出时间</th>
+                        <th>累计涨幅</th>
+                    </tr>
+                    <tr>
+                        <td>600095</td>
+                        <td>湘財股份</td>
+                        <td>3月31日</td>
+                        <td>4月1日</td>
+                        <td class="highlight-text">10.03%</td>
+                    </tr>
+                    <tr>
+                        <td>001212</td>
+                        <td>中旗新材</td>
+                        <td>4月1日</td>
+                        <td>4月2日</td>
+                        <td class="highlight-text">10.00%</td>
+                    </tr>
+                    <tr>
+                        <td>001212</td>
+                        <td>中旗新材</td>
+                        <td>4月2日</td>
+                        <td>4月3日</td>
+                        <td class="highlight-text">9.99%</td>
+                    </tr>
+                    <tr>
+                        <td>001212</td>
+                        <td>中旗新材</td>
+                        <td>4月3日</td>
+                        <td>4月7日</td>
+                        <td class="highlight-text">10.01%</td>
+                    </tr>
+                    <tr>
+                        <td>001212</td>
+                        <td>中旗新材</td>
+                        <td>4月7日</td>
+                        <td>4月8日</td>
+                        <td class="highlight-text">10.01%</td>
+                    </tr>
+                    <tr>
+                        <td>002688</td>
+                        <td>金河生物</td>
+                        <td>4月8日</td>
+                        <td>4月9日</td>
+                        <td class="highlight-text">10.03%</td>
+                    </tr>
+                    <tr>
+                        <td>002688</td>
+                        <td>金河生物</td>
+                        <td>4月9日</td>
+                        <td>4月10日</td>
+                        <td class="highlight-text">11.11%</td>
+                    </tr>
+                    <tr>
+                        <td>600180</td>
+                        <td>瑞茂通</td>
+                        <td>4月10日</td>
+                        <td>4月11日</td>
+                        <td class="highlight-text">9.98%</td>
+                    </tr>
+                </table>
+                <div style="text-align: center; margin: 30px 0;">
+                    <img src="https://www.gvman.online/img/2.jpg" alt="国投证券成果" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);">
+                </div>
+                <div class="cta-container">
+                    <button class="btn" onclick="opensite()">了解国投专业分析方法</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 4: Check-in Benefits -->
+        <div class="checkin-section">
+            <div class="container">
+                <div class="checkin-content">
+                    <h2 class="checkin-title">国投内部群每日打卡签到</h2>
+                    <p style="text-align: center; margin-bottom: 30px; color: var(--gray-text);">早中晚三次在群里进行签到活动，获取专业分析工具与课程</p>
+                    
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">·签到福利·</h3>
+                    <ul class="benefit-list">
+                        <li>签到1天领取《仙人指路》指标+课件</li>
+                        <li>签到3天领取《机构操盘》指标+课件</li>
+                        <li>签到5天领取《机构精美礼品一份》</li>
+                        <li>签到7天领取《天下第一选股器》《必涨牛股》</li>
+                        <li>签到10天获得机构特权子账户操作席位</li>
+                    </ul>
+                    
+                    <div class="time-slot">
+                        <h4>签到时间</h4>
+                        <p>早上: 09:15-11:00 | 中午: 13:30-15:00 | 晚上: 19:15-20:00</p>
+                    </div>
+                    
+                    <div class="checkin-method">
+                        <h4>签到方式</h4>
+                        <p>群内发送"签到"二字截图发给助理登记即可</p>
+                    </div>
+                    
+                    <div class="cta-container">
+                        <button class="btn" onclick="opensite()">立即加入国投内部群</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action Section -->
+        <div class="card" style="background: linear-gradient(135deg, rgba(10, 20, 40, 0.9) 0%, rgba(20, 40, 80, 0.9) 100%);">
+            <h2 class="card-title">加入国投证券投资社区的专享福利</h2>
+            <div class="card-content">
+                <ul style="list-style: none; margin: 20px 0;">
+                    <li style="padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--light-text);">✓ 交易日每天下午2点推荐一支必涨牛股</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--light-text);">✓ 进群领取专业分析指标，提升选股准确率</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--light-text);">✓ 领取价值2000元股市分析大礼包</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--light-text);">✓ 学习专业股市分析课程，系统提升投资能力</li>
+                    <li style="padding: 12px 0; color: var(--light-text);">✓ 累计在群内签到可以领取现金红包200元</li>
+                </ul>
+                <div class="cta-container">
+                    <button class="btn" onclick="opensite()">立即加入获取专业投资指导</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Proof Section -->
+        <div class="social-proof">
+            <div class="social-card">
+                <div class="social-number">86%</div>
+                <div class="social-text">学员表示投资分析能力显著提升</div>
+            </div>
+            <div class="social-card">
+                <div class="social-number">25,000+</div>
+                <div class="social-text">投资者已加入我们的学习社区</div>
+            </div>
+            <div class="social-card">
+                <div class="social-number">92%</div>
+                <div class="social-text">用户对我们的指标体系表示满意</div>
+            </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <div class="cta-container" style="margin: 60px 0;">
+            <button class="btn" onclick="opensite()" style="padding: 20px 40px; font-size: 1.3rem;">立即加入获取2025年潜力股名单</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <h3>免责声明</h3>
+                <p>本网站提供的信息仅供教育和参考目的，不构成投资建议、推荐或邀约。投资者在做出任何投资决策前，应当进行独立研究并咨询专业顾问。</p>
+                <p>股票投资涉及风险，包括但不限于市场风险、流动性风险和公司特定风险。过去的表现不代表未来的结果，投资者可能损失全部或部分投资本金。</p>
+                <p>本网站内容符合谷歌金融广告政策要求，我们遵守中国证监会、证券交易所及其他相关监管机构的规定。</p>
+                <p>投资者应自行承担投资决策的责任，并对由此产生的一切后果负责。任何从本网站获取信息所导致的直接或间接损失，本网站及相关方概不负责。</p>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 国投证券投资教育平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function opensite() {
+            window.open('https://line.me/');
+        }
+    </script>
+</body>
+</html>
